@@ -26,7 +26,6 @@
 					
 						<g:sortableColumn property="title" title="${message(code: 'note.title.label', default: 'Title')}" />
 					
-						<g:sortableColumn property="content" title="${message(code: 'note.content.label', default: 'Content')}" />
 					
 					</tr>
 				</thead>
@@ -36,7 +35,6 @@
 					
 						<td><g:link action="show" id="${noteInstance.id}">${fieldValue(bean: noteInstance, field: "title")}</g:link></td>
 					
-						<td>${fieldValue(bean: noteInstance, field: "content")}</td>
 					
 					</tr>
 				</g:each>
