@@ -14,6 +14,9 @@
 	<label for="content">
 		<g:message code="note.content.label" default="Content" />
 	</label>
-	<richui:richTextEditor name="content" value="${noteInstance?.content}" width="525" />
+	
+<ckeditor:editor name="content" height="400px" width="80%">
+${noteInstance?.content}
+</ckeditor:editor>
+	
 </div>
-
