@@ -25,20 +25,23 @@
 			
 				<g:if test="${noteInstance?.title}">
 				<li class="fieldcontain">
-					<span id="title-label" class="property-label"><g:message code="note.title.label" default="Title" /></span>
 					
-						<span class="property-value" aria-labelledby="title-label"><g:fieldValue bean="${noteInstance}" field="title"/></span>
+						<g:fieldValue bean="${noteInstance}" field="title"/>
 					
+				</li>
+				</g:if>
+				<g:if test="${noteInstance?.dateCreated}">
+				<li class="fieldcontain2">
+						<span style="font-size: 11px;color: gray;">Created : <g:fieldValue bean="${noteInstance}" field="dateCreated"/></span>
+						<span style="font-size: 11px;padding-left : 10px;color: gray;">Modified :  <g:fieldValue bean="${noteInstance}" field="lastUpdated"/></span>
 				</li>
 				</g:if>
 			
 				<g:if test="${noteInstance?.content}">
 				<li class="fieldcontain">
-					<span id="content-label" class="property-label"><g:message code="note.content.label" default="Content" /></span>
 					
-						<span class="property-value" aria-labelledby="content-label">
 						${noteInstance.content.decodeHTML()}
-						</span>
+						
 					
 				</li>
 				</g:if>

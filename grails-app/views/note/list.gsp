@@ -25,8 +25,8 @@
 					<tr>
 					
 						<g:sortableColumn property="title" title="${message(code: 'note.title.label', default: 'Title')}" />
-					
-					
+					<g:sortableColumn property="dateCreated" title="${message(code: 'note.dateCreated.label', default: 'Date Created')}" />
+					<g:sortableColumn property="lastUpdated" title="${message(code: 'note.lastUpdated.label', default: 'Last Updated')}" />
 					</tr>
 				</thead>
 				<tbody>
@@ -34,7 +34,8 @@
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
 						<td><g:link action="show" id="${noteInstance.id}">${fieldValue(bean: noteInstance, field: "title")}</g:link></td>
-					
+					<td><g:link action="show" id="${noteInstance.id}">${fieldValue(bean: noteInstance, field: "dateCreated")}</g:link></td>
+					<td><g:link action="show" id="${noteInstance.id}">${fieldValue(bean: noteInstance, field: "lastUpdated")}</g:link></td>
 					
 					</tr>
 				</g:each>

@@ -1,5 +1,7 @@
 package com.abc.wordbook
 
+import java.util.Date;
+
 class Word {
 
     static belongsTo = [note:Note]
@@ -9,6 +11,8 @@ class Word {
     String function;
     String definitionSentence
     String exampleSentence
+    Date dateCreated
+    Date lastUpdated
     
     static constraints = {
         word()
