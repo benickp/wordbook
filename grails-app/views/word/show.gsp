@@ -23,11 +23,11 @@
 			</g:if>
 			<ol class="property-list word">
 			
-				<g:if test="${wordInstance?.word}">
+				<g:if test="${wordInstance?.name}">
 				<li class="fieldcontain">
-					<span id="word-label" class="property-label"><g:message code="word.word.label" default="Word" /></span>
+					<span id="name-label" class="property-label"><g:message code="word.name.label" default="Name" /></span>
 					
-						<span class="property-value" aria-labelledby="word-label"><g:fieldValue bean="${wordInstance}" field="word"/></span>
+						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${wordInstance}" field="name"/></span>
 					
 				</li>
 				</g:if>
@@ -64,6 +64,24 @@
 					<span id="exampleSentence-label" class="property-label"><g:message code="word.exampleSentence.label" default="Example Sentence" /></span>
 					
 						<span class="property-value" aria-labelledby="exampleSentence-label"><g:fieldValue bean="${wordInstance}" field="exampleSentence"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${wordInstance?.dateCreated}">
+				<li class="fieldcontain">
+					<span id="dateCreated-label" class="property-label"><g:message code="word.dateCreated.label" default="Date Created" /></span>
+					
+						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${wordInstance?.dateCreated}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${wordInstance?.lastUpdated}">
+				<li class="fieldcontain">
+					<span id="lastUpdated-label" class="property-label"><g:message code="word.lastUpdated.label" default="Last Updated" /></span>
+					
+						<span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate date="${wordInstance?.lastUpdated}" /></span>
 					
 				</li>
 				</g:if>

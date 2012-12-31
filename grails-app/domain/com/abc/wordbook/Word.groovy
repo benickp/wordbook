@@ -6,7 +6,7 @@ class Word {
 
     static belongsTo = [note:Note]
     
-    String word;
+    String name;
     String translation;
     String function;
     String definitionSentence
@@ -14,8 +14,12 @@ class Word {
     Date dateCreated
     Date lastUpdated
     
+    String toString(){
+        return name
+    }
+    
     static constraints = {
-        word()
+        name()
         translation()
         function(inList:['noun','verb','adverb','adjective','phrasal verb','phrase'])
         definitionSentence()
@@ -23,4 +27,8 @@ class Word {
     }
     
     static mapWith = "mongo"
+    
+    static mapping = {
+        note attr: "noteId"
+    }
 }

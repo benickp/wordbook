@@ -16,7 +16,19 @@ class WordController {
     }
 
     def create() {
-        [wordInstance: new Word(params)]
+        def wordInstance = new Word(params)
+        
+        if( params.noteId!=null ){
+            def noteInstance = Note.get(params.noteId)
+            if (!noteInstance) {
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'note.label', default: 'Note'), params.noteId])
+                redirect(action: "list")
+                return
+            }
+            wordInstance.note = noteInstance
+        }
+        
+        [wordInstance: wordInstance]
     }
 
     def save() {

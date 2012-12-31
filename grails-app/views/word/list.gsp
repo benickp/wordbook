@@ -24,7 +24,7 @@
 				<thead>
 					<tr>
 					
-						<g:sortableColumn property="word" title="${message(code: 'word.word.label', default: 'Word')}" />
+						<g:sortableColumn property="name" title="${message(code: 'word.name.label', default: 'Name')}" />
 					
 						<g:sortableColumn property="translation" title="${message(code: 'word.translation.label', default: 'Translation')}" />
 					
@@ -34,7 +34,7 @@
 					
 						<g:sortableColumn property="exampleSentence" title="${message(code: 'word.exampleSentence.label', default: 'Example Sentence')}" />
 					
-						<th><g:message code="word.note.label" default="Note" /></th>
+						<g:sortableColumn property="dateCreated" title="${message(code: 'word.dateCreated.label', default: 'Date Created')}" />
 					
 					</tr>
 				</thead>
@@ -42,7 +42,7 @@
 				<g:each in="${wordInstanceList}" status="i" var="wordInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${wordInstance.id}">${fieldValue(bean: wordInstance, field: "word")}</g:link></td>
+						<td><g:link action="show" id="${wordInstance.id}">${fieldValue(bean: wordInstance, field: "name")}</g:link></td>
 					
 						<td>${fieldValue(bean: wordInstance, field: "translation")}</td>
 					
@@ -52,7 +52,7 @@
 					
 						<td>${fieldValue(bean: wordInstance, field: "exampleSentence")}</td>
 					
-						<td>${fieldValue(bean: wordInstance, field: "note")}</td>
+						<td><g:formatDate date="${wordInstance.dateCreated}" /></td>
 					
 					</tr>
 				</g:each>
