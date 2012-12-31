@@ -24,11 +24,11 @@
 				<thead>
 					<tr>
 					
-						<g:sortableColumn property="name" title="${message(code: 'word.name.label', default: 'Name')}" />
+						<g:sortableColumn property="word" title="${message(code: 'word.word.label', default: 'Word')}" />
+					
+						<th><g:message code="word.category.label" default="Category" /></th>
 					
 						<g:sortableColumn property="translation" title="${message(code: 'word.translation.label', default: 'Translation')}" />
-					
-						<g:sortableColumn property="function" title="${message(code: 'word.function.label', default: 'Function')}" />
 					
 						<g:sortableColumn property="definitionSentence" title="${message(code: 'word.definitionSentence.label', default: 'Definition Sentence')}" />
 					
@@ -42,11 +42,11 @@
 				<g:each in="${wordInstanceList}" status="i" var="wordInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${wordInstance.id}">${fieldValue(bean: wordInstance, field: "name")}</g:link></td>
+						<td><g:link action="show" id="${wordInstance.id}">${fieldValue(bean: wordInstance, field: "word")}</g:link></td>
+					
+						<td>${fieldValue(bean: wordInstance, field: "category")}</td>
 					
 						<td>${fieldValue(bean: wordInstance, field: "translation")}</td>
-					
-						<td>${fieldValue(bean: wordInstance, field: "function")}</td>
 					
 						<td>${fieldValue(bean: wordInstance, field: "definitionSentence")}</td>
 					

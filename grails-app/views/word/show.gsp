@@ -23,11 +23,29 @@
 			</g:if>
 			<ol class="property-list word">
 			
-				<g:if test="${wordInstance?.name}">
+				<g:if test="${wordInstance?.note}">
 				<li class="fieldcontain">
-					<span id="name-label" class="property-label"><g:message code="word.name.label" default="Name" /></span>
+					<span id="note-label" class="property-label"><g:message code="word.note.label" default="Note" /></span>
 					
-						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${wordInstance}" field="name"/></span>
+						<span class="property-value" aria-labelledby="note-label"><g:link controller="note" action="show" id="${wordInstance?.note?.id}">${wordInstance?.note?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${wordInstance?.word}">
+				<li class="fieldcontain">
+					<span id="word-label" class="property-label"><g:message code="word.word.label" default="Word" /></span>
+					
+						<span class="property-value" aria-labelledby="word-label"><g:fieldValue bean="${wordInstance}" field="word"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${wordInstance?.category}">
+				<li class="fieldcontain">
+					<span id="category-label" class="property-label"><g:message code="word.category.label" default="Category" /></span>
+					
+						<span class="property-value" aria-labelledby="category-label"><g:link controller="wordCategory" action="show" id="${wordInstance?.category?.id}">${wordInstance?.category?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -37,15 +55,6 @@
 					<span id="translation-label" class="property-label"><g:message code="word.translation.label" default="Translation" /></span>
 					
 						<span class="property-value" aria-labelledby="translation-label"><g:fieldValue bean="${wordInstance}" field="translation"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${wordInstance?.function}">
-				<li class="fieldcontain">
-					<span id="function-label" class="property-label"><g:message code="word.function.label" default="Function" /></span>
-					
-						<span class="property-value" aria-labelledby="function-label"><g:fieldValue bean="${wordInstance}" field="function"/></span>
 					
 				</li>
 				</g:if>
@@ -86,14 +95,7 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${wordInstance?.note}">
-				<li class="fieldcontain">
-					<span id="note-label" class="property-label"><g:message code="word.note.label" default="Note" /></span>
-					
-						<span class="property-value" aria-labelledby="note-label"><g:link controller="note" action="show" id="${wordInstance?.note?.id}">${wordInstance?.note?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
+				
 			
 			</ol>
 			<g:form>

@@ -19,28 +19,28 @@
 </div>
 </g:else>
 
-<div class="fieldcontain ${hasErrors(bean: wordInstance, field: 'name', 'error')} ">
-	<label for="name">
-		<g:message code="word.name.label" default="Name" />
-		
+<div class="fieldcontain ${hasErrors(bean: wordInstance, field: 'word', 'error')} required">
+	<label for="word">
+		<g:message code="word.word.label" default="Word" />
+		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="name" value="${wordInstance?.name}"/>
+	<g:textField name="word" required="" value="${wordInstance?.word}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: wordInstance, field: 'translation', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: wordInstance, field: 'category', 'error')} required">
+	<label for="category">
+		<g:message code="word.category.label" default="Category" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="category" name="category.id" from="${com.abc.wordbook.WordCategory.list()}" optionKey="id" required="" value="${wordInstance?.category?.id}" class="many-to-one"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: wordInstance, field: 'translation', 'error')} required">
 	<label for="translation">
 		<g:message code="word.translation.label" default="Translation" />
-		
+		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="translation" value="${wordInstance?.translation}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: wordInstance, field: 'function', 'error')} ">
-	<label for="function">
-		<g:message code="word.function.label" default="Function" />
-		
-	</label>
-	<g:select name="function" from="${wordInstance.constraints.function.inList}" value="${wordInstance?.function}" valueMessagePrefix="word.function" noSelection="['': '']"/>
+	<g:textField name="translation" required="" value="${wordInstance?.translation}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: wordInstance, field: 'definitionSentence', 'error')} ">
@@ -51,13 +51,11 @@
 	<g:textField name="definitionSentence" value="${wordInstance?.definitionSentence}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: wordInstance, field: 'exampleSentence', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: wordInstance, field: 'exampleSentence', 'error')} required">
 	<label for="exampleSentence">
 		<g:message code="word.exampleSentence.label" default="Example Sentence" />
-		
+		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="exampleSentence" value="${wordInstance?.exampleSentence}"/>
+	<g:textField name="exampleSentence" required="" value="${wordInstance?.exampleSentence}"/>
 </div>
-
-
 
