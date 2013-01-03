@@ -43,11 +43,6 @@ class DbRealm {
     }
 
     def hasRole(principal, roleName) {
-//        def user = User.findByUsername(principal)
-//        return user.roles.find {
-//            (it.name == roleName) 
-//        }
-        
         def roles = User.withCriteria {
             roles {
                 eq("name", roleName)

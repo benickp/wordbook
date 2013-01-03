@@ -13,7 +13,7 @@ hibernate {
 environments {
     development {
         dataSource {
-            dbCreate = "update"
+            dbCreate = "create-drop"
             url = "jdbc:mysql://127.0.0.1:3306/wordbook?useUnicode=yes&characterEncoding=UTF-8"
             username = "wordbook"
             password = "abc12345"

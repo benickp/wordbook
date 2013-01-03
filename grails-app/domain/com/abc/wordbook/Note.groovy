@@ -1,6 +1,7 @@
 package com.abc.wordbook
 
 import com.abc.wordbook.auth.User
+import com.mysql.jdbc.Clob
 
 class Note {
     
@@ -9,6 +10,8 @@ class Note {
     String title
     String url
     String content
+    String filename
+    
     Date dateCreated
     Date lastUpdated
     
@@ -20,10 +23,12 @@ class Note {
     static fetchMode = [words : 'eager']
     
     static constraints = {
-        title()
-        url()
-        content()
+        title(blank:false)
+        url(nullable:true)
+        content(blank:false)
     }
+    
+    static transients = ['content']
     
 //    static mapWith = "mongo"
     
