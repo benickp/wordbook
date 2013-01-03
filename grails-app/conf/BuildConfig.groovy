@@ -35,6 +35,7 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
 
         // runtime 'mysql:mysql-connector-java:5.1.20'
+        runtime 'mysql:mysql-connector-java:5.1.22-bin'
     }
 
     plugins {
@@ -53,5 +54,6 @@ grails.project.dependency.resolution = {
 
         compile ":cache:1.0.0"
         compile ":ckeditor:3.6.3.0"
+        compile ":shiro:1.1.4"
     }
 }

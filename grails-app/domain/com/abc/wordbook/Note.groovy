@@ -1,8 +1,13 @@
 package com.abc.wordbook
 
+import com.abc.wordbook.auth.User
+
 class Note {
     
+    static belongsTo = [user:User]
+    
     String title
+    String url
     String content
     Date dateCreated
     Date lastUpdated
@@ -16,8 +21,10 @@ class Note {
     
     static constraints = {
         title()
+        url()
         content()
     }
     
-    static mapWith = "mongo"
+//    static mapWith = "mongo"
+    
 }

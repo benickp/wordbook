@@ -26,10 +26,6 @@ class Word {
         exampleSentence(blank:false)
     }
     
-    static mapWith = "mongo"
+//    static mapWith = "mongo"
     
-    static mapping = {
-        note attr: "noteId"
-        category attr:"wordCategoryId"
-    }
 }

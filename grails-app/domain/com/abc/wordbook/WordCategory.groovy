@@ -16,5 +16,5 @@ class WordCategory {
         name(blank:false,inList:['noun','verb','adverb','adjective','phrasal verb','phrase'],unique:true)
     }
     
-    static mapWith = "mongo"
+//    static mapWith = "mongo"
 }
