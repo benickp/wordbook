@@ -17,8 +17,15 @@ class NoteController {
     }
 
     def list(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        [noteInstanceList: Note.list(params), noteInstanceTotal: Note.count()]
+        def principal = SecurityUtils.subject?.principal
+        def results = Note.withCriteria {
+                    user {
+                        eq("username", principal)
+                    }
+                    maxResults(Math.min(max ?: 10, 100))
+            }
+            
+        [noteInstanceList: results, noteInstanceTotal: Note.count()]
     }
 
     def create() {
@@ -34,31 +41,45 @@ class NoteController {
 //        [noteInstance: new Note(params)]
     }
     
+    def getDirectoryPath(noteInstance){
+        def filePath = grailsApplication.config.file.location 
+        if( noteInstance !=null ){
+            filePath = filePath + noteInstance.user.id +"/"
+        }
+        if( noteInstance.id !=null ){
+            filePath = filePath + "/" +noteInstance.id +"/"
+        }
+        return filePath
+    }
+    
     def saveContentToFile(noteInstance, params){
         // Save HTML content to a file
         def dataFomat = new SimpleDateFormat("yyyyMMddHHmmss");
-        def fileStore = new File("note_${dataFomat.format(new Date())}.html");
+        def dir = new File(getDirectoryPath(noteInstance));
+        def fileStore = new File(dir, "note_${dataFomat.format(new Date())}.html");
+        FileUtils.forceMkdir(dir);
         fileStore.createNewFile();
         FileUtils.writeStringToFile(fileStore, params.content);
-        noteInstance.filename = fileStore.absolutePath;
+        if( noteInstance.id == null )
+            noteInstance.filename = fileStore.absolutePath;
+        else 
+            noteInstance.filename = fileStore.name;
     }
 
     def save() {
         def noteInstance = new Note(params)
         saveContentToFile(noteInstance, params)
         
-        // Save HTML content to a file
-//        def dataFomat = new SimpleDateFormat("yyyyMMddHHmmss");
-//        def fileStore = new File("note_${dataFomat.format(new Date())}.html");
-//        fileStore.createNewFile();
-//        FileUtils.writeStringToFile(fileStore, params.content);
-//        noteInstance.filename = fileStore.absolutePath;
-
         if (!noteInstance.save(flush: true)) {
             render(view: "create", model: [noteInstance: noteInstance])
             return
         }
 
+        def file = new File(noteInstance.filename)
+        def dir = new File(getDirectoryPath(noteInstance))
+        FileUtils.moveFileToDirectory(file, dir, true)
+        noteInstance.filename = file.name;
+        noteInstance.save(flush: true)
         flash.message = message(code: 'default.created.message', args: [message(code: 'note.label', default: 'Note'), noteInstance.id])
         redirect(action: "show", id: noteInstance.id)
     }
@@ -70,8 +91,7 @@ class NoteController {
             redirect(action: "list")
             return
         }
-        
-        def fileStore = new File(noteInstance.filename);
+        def fileStore = new File(getDirectoryPath(noteInstance)+noteInstance.filename);
         noteInstance.content = FileUtils.readFileToString(fileStore);
         [noteInstance: noteInstance]
     }
@@ -83,8 +103,7 @@ class NoteController {
             redirect(action: "list")
             return
         }
-
-        def fileStore = new File(noteInstance.filename);
+        def fileStore = new File(getDirectoryPath(noteInstance)+noteInstance.filename);
         noteInstance.content = FileUtils.readFileToString(fileStore);
         [noteInstance: noteInstance]
     }

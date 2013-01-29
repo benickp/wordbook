@@ -48,7 +48,7 @@
 		<g:message code="word.definitionSentence.label" default="Definition Sentence" />
 		
 	</label>
-	<g:textField name="definitionSentence" value="${wordInstance?.definitionSentence}"/>
+	<g:textArea name="definitionSentence" value="${wordInstance?.definitionSentence}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: wordInstance, field: 'exampleSentence', 'error')} required">
@@ -56,6 +56,6 @@
 		<g:message code="word.exampleSentence.label" default="Example Sentence" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="exampleSentence" required="" value="${wordInstance?.exampleSentence}"/>
+	<g:textArea name="exampleSentence" required="" value="${wordInstance?.exampleSentence}"/>
 </div>
 

@@ -67,9 +67,11 @@ grails.gorm.default.mapping = {
 environments {
     development {
         grails.logging.jul.usebridge = true
+        file.location = "/Users/benickp/data/wordbook/"
     }
     production {
         grails.logging.jul.usebridge = false
+        file.location = "/Users/benickp/data/wordbook/"
         // TODO: grails.serverURL = "http://www.changeme.com"
     }
 }
