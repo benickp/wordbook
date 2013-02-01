@@ -13,7 +13,7 @@ hibernate {
 environments {
     development {
         dataSource {
-            dbCreate = "create-drop"
+            dbCreate = "update"
             url = "jdbc:mysql://127.0.0.1:3306/wordbook?useUnicode=yes&characterEncoding=UTF-8"
             username = "wordbook"
             password = "abc12345"
@@ -33,9 +33,9 @@ environments {
     production {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:mysql://localhost/smartjob"
-            username = "grails"
-            password = "grails"
+            url = "jdbc:mysql://127.0.0.1:3306/notenword?useUnicode=yes&characterEncoding=UTF-8"
+            username = "notenword"
+            password = "abc12345"
             pooled = true
             properties {
                maxActive = -1

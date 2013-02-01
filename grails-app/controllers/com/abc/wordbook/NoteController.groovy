@@ -18,13 +18,8 @@ class NoteController {
 
     def list(Integer max) {
         def principal = SecurityUtils.subject?.principal
-        def results = Note.withCriteria {
-                    user {
-                        eq("username", principal)
-                    }
-                    maxResults(Math.min(max ?: 10, 100))
-            }
-            
+        def results = Note.executeQuery("from Note as note where note.user.username = :name", [name:principal]);
+        
         [noteInstanceList: results, noteInstanceTotal: Note.count()]
     }
 

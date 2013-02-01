@@ -71,7 +71,7 @@ environments {
     }
     production {
         grails.logging.jul.usebridge = false
-        file.location = "/Users/benickp/data/wordbook/"
+        file.location = "/Users/benickp/data/notenword/"
         // TODO: grails.serverURL = "http://www.changeme.com"
     }
 }

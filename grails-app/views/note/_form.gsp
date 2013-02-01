@@ -6,6 +6,10 @@
 	<g:textField name="title" value="${noteInstance?.title}" style="width:100%;"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: noteInstance, field: 'url', 'error')} required">
+	URL: <g:textField name="url" value="${noteInstance?.url}" style="width:100%;"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: noteInstance, field: 'content', 'error')} required">
 <ckeditor:editor name="content" height="500px" width="100%">
 ${noteInstance?.content}
