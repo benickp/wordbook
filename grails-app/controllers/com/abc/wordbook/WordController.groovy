@@ -10,6 +10,12 @@ class WordController {
         redirect(action: "list", params: params)
     }
 
+	def checkDict() {
+		def http = new HTTPBuilder('http://dictionary.search.yahoo.com')
+		def html = http.get( path : '/search', query : [p:params.word, fr2:'dict'] )
+		
+	}
+	
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         [wordInstanceList: Word.list(params), wordInstanceTotal: Word.count()]
