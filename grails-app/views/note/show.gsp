@@ -64,5 +64,15 @@
 			</g:form>
 			
 		</div>
+		<g:javascript src="jquery.highlight.js" />
+		<g:javascript>	
+			$(document).ready(function() {
+				var wordArray = new Array();
+				<g:each status="i" var="word" in="${noteInstance.words}">
+					wordArray[${i}] = "${word.word}";
+				</g:each>
+				$("body p").highlight(wordArray);
+			 });
+		</g:javascript>
 	</body>
 </html>

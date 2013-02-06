@@ -16,6 +16,7 @@
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
 		<ckeditor:resources/>
 		<g:layoutHead/>
+		<g:javascript library="jquery" plugin="jquery"/>
 		<r:layoutResources />
 	</head>
 	<body>
