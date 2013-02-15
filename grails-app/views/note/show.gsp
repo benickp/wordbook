@@ -68,19 +68,24 @@
 		<g:javascript>	
 			$(document).ready(function() {
 				var wordArray = new Array();
-				var map = new Object();
+				var mapId = new Object();
+				var mapTrans = new Object();
+				var mapCat = new Object();
 				<g:each status="i" var="word" in="${noteInstance.words}">
 					wordArray[${i}] = "${word.word}";
-					map["${word.word}"] = ${word.id};
+					mapId["${word.word}"] = ${word.id};
+					mapTrans["${word.word}"] = "${word.translation}";
+					mapCat["${word.word}"] = "${word.category.abbr}";
 				</g:each>
 				$("body p").highlight(wordArray, { element: 'a' });
 				
 				$('.highlight').attr("href", function(index, oldVal){
-					return "${resource(uri:'/')}/word/show/"+ map[this.text];				
+					return "${resource(uri:'/')}/word/show/"+ mapId[this.text];				
 				});
 				
-				var ttElems = $("<div class='tooltip' />").append("<div class='text'>Yeah</div>");
-				$('.highlight').after(ttElems);
+				$('.highlight').after(function(index, html){
+					return $("<div class='tooltip' />").append("<div class='text'>("+mapCat[this.text]+") "+mapTrans[this.text]+"</div>");
+				});
 				
 				$('.highlight').hover(function(){
 					var eleOffset = $(this).offset();

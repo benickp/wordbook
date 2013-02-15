@@ -5,6 +5,7 @@ import java.util.Date;
 class WordCategory {
     
     String name
+    String abbr
     Date dateCreated
     Date lastUpdated
     

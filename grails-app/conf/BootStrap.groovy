@@ -53,22 +53,22 @@ class BootStrap {
 
         def currentDate = new Date();
 
-        WordCategory.findByName('noun') ?: new WordCategory(name: 'noun',
+        WordCategory.findByName('noun') ?: new WordCategory(name: 'noun', abbr:'n',
                 dateCreated: currentDate, lastUpdated: currentDate).save(flush: true, failOnError: true)
 
-        WordCategory.findByName('verb') ?: new WordCategory(name: 'verb',
+        WordCategory.findByName('verb') ?: new WordCategory(name: 'verb', abbr:'v',
                 dateCreated: currentDate, lastUpdated: currentDate).save(flush: true, failOnError: true)
 
-        WordCategory.findByName('adjective') ?: new WordCategory(name: 'adjective',
+        WordCategory.findByName('adjective') ?: new WordCategory(name: 'adjective', abbr:'abj',
                 dateCreated: currentDate, lastUpdated: currentDate).save(flush: true, failOnError: true)
 
-        WordCategory.findByName('adverb') ?: new WordCategory(name: 'adverb',
+        WordCategory.findByName('adverb') ?: new WordCategory(name: 'adverb', abbr:'adv',
                 dateCreated: currentDate, lastUpdated: currentDate).save(flush: true, failOnError: true)
 
-        WordCategory.findByName('phrasal verb') ?: new WordCategory(name: 'phrasal verb',
+        WordCategory.findByName('phrasal verb') ?: new WordCategory(name: 'phrasal verb', abbr:'ph v',
                 dateCreated: currentDate, lastUpdated: currentDate).save(flush: true, failOnError: true)
 
-        WordCategory.findByName('phrase') ?: new WordCategory(name: 'phrase',
+        WordCategory.findByName('phrase') ?: new WordCategory(name: 'phrase', abbr:'ph',
                 dateCreated: currentDate, lastUpdated: currentDate).save(flush: true, failOnError: true)
 
     }
