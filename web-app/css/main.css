@@ -10,8 +10,23 @@ h1, h2, h3, h4, h5, h6 {
 
 /* MY STYLE */
 .highlight {
-    background-color: #FFFF88;
+    font-weight:bold;
 }
+
+.tooltip{
+  text-align: center;
+  color: black;
+  display: none;
+  position: absolute;
+}
+.tooltip .text{
+  background-color: rgb(255, 235, 89);
+  color: black;
+  margin-top: -20px;
+  font-weight: normal;
+  font-style: italic;
+}
+
 
 /* BASE LAYOUT */
 

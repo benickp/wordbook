@@ -17,6 +17,7 @@
 		<ckeditor:resources/>
 		<g:layoutHead/>
 		<g:javascript library="jquery" plugin="jquery"/>
+		<r:require module="jquery-ui"/>
 		<r:layoutResources />
 	</head>
 	<body>

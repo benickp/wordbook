@@ -88,7 +88,13 @@ class NoteController {
         }
         def fileStore = new File(getDirectoryPath(noteInstance)+noteInstance.filename);
         noteInstance.content = FileUtils.readFileToString(fileStore);
-        [noteInstance: noteInstance]
+        
+        def wordMap = [:]
+        for( w in noteInstance.words){
+            wordMap.put(w.word, w)
+        }
+        
+        [noteInstance: noteInstance, wordMap : wordMap]
     }
 
     def edit(Long id) {

@@ -1,5 +1,6 @@
 
 <%@ page import="com.abc.wordbook.Note" %>
+<%@ page import="com.abc.wordbook.Word" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -22,7 +23,6 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list note">
-			
 				<g:if test="${noteInstance?.title}">
 				<li class="fieldcontain">
 					<span style="font-size: 18px;font-weight: bold;">
@@ -68,11 +68,34 @@
 		<g:javascript>	
 			$(document).ready(function() {
 				var wordArray = new Array();
+				var map = new Object();
 				<g:each status="i" var="word" in="${noteInstance.words}">
 					wordArray[${i}] = "${word.word}";
+					map["${word.word}"] = ${word.id};
 				</g:each>
-				$("body p").highlight(wordArray);
+				$("body p").highlight(wordArray, { element: 'a' });
+				
+				$('.highlight').attr("href", function(index, oldVal){
+					return "${resource(uri:'/')}/word/show/"+ map[this.text];				
+				});
+				
+				var ttElems = $("<div class='tooltip' />").append("<div class='text'>Yeah</div>");
+				$('.highlight').after(ttElems);
+				
+				$('.highlight').hover(function(){
+					var eleOffset = $(this).offset();
+  					$(this).next('.tooltip').show();
+  					$(this).next('.tooltip').
+    				position({at: 'top', of: $(this), my: 'left top'})
+    			});
+    			
+    			$('.highlight').mouseleave(function(){
+  					$('.tooltip').hide();
+				});
+				
 			 });
 		</g:javascript>
+		
+		
 	</body>
 </html>
